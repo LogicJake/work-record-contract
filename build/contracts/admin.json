@@ -1,0 +1,1462 @@
+{
+  "contractName": "admin",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "workerId",
+          "type": "uint16"
+        },
+        {
+          "name": "date",
+          "type": "uint256"
+        },
+        {
+          "name": "count",
+          "type": "uint8"
+        },
+        {
+          "name": "add_time",
+          "type": "uint256"
+        }
+      ],
+      "name": "addRecord",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "workerId",
+          "type": "uint16"
+        }
+      ],
+      "name": "getRecords",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b5061020e806100206000396000f30060806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063870f44da14610051578063f5ea7d52146100a3575b600080fd5b34801561005d57600080fd5b506100a1600480360381019080803561ffff16906020019092919080359060200190929190803560ff169060200190929190803590602001909291905050506100e8565b005b3480156100af57600080fd5b506100d2600480360381019080803561ffff169060200190929190505050610196565b6040518082815260200191505060405180910390f35b6100f06101bd565b6060604051908101604052808581526020018460ff1681526020018381525090506000808661ffff1661ffff16815260200190815260200160002081908060018154018082558091505090600182039060005260206000209060030201600090919290919091506000820151816000015560208201518160010160006101000a81548160ff021916908360ff160217905550604082015181600201555050505050505050565b60008060008361ffff1661ffff168152602001908152602001600020805490509050919050565b60606040519081016040528060008152602001600060ff1681526020016000815250905600a165627a7a7230582095ac21474d58c901aa1b6e676df01b193e918b9622941be2ba356c13070c272b0029",
+  "deployedBytecode": "0x60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063870f44da14610051578063f5ea7d52146100a3575b600080fd5b34801561005d57600080fd5b506100a1600480360381019080803561ffff16906020019092919080359060200190929190803560ff169060200190929190803590602001909291905050506100e8565b005b3480156100af57600080fd5b506100d2600480360381019080803561ffff169060200190929190505050610196565b6040518082815260200191505060405180910390f35b6100f06101bd565b6060604051908101604052808581526020018460ff1681526020018381525090506000808661ffff1661ffff16815260200190815260200160002081908060018154018082558091505090600182039060005260206000209060030201600090919290919091506000820151816000015560208201518160010160006101000a81548160ff021916908360ff160217905550604082015181600201555050505050505050565b60008060008361ffff1661ffff168152602001908152602001600020805490509050919050565b60606040519081016040528060008152602001600060ff1681526020016000815250905600a165627a7a7230582095ac21474d58c901aa1b6e676df01b193e918b9622941be2ba356c13070c272b0029",
+  "sourceMap": "26:607:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:607:1;;;;;;;",
+  "deployedSourceMap": "26:607:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;267:220;;8:9:-1;5:2;;;30:1;27;20:12;5:2;267:220:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;497:134;;8:9:-1;5:2;;;30:1;27;20:12;5:2;497:134:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;267:220;355:24;;:::i;:::-;382:27;;;;;;;;;389:4;382:27;;;;394:5;382:27;;;;;;400:8;382:27;;;355:54;;419:7;:17;427:8;419:17;;;;;;;;;;;;;;;442:10;419:34;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;419:34:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;267:220;;;;;:::o;497:134::-;550:4;573:7;:17;581:8;573:17;;;;;;;;;;;;;;;:24;;;;566:31;;497:134;;;:::o;26:607::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.4.16;\n\ncontract admin{\n    struct Record{\n        uint date;       //work date\n        uint8 count;       //work hour\n        uint add_time;     // the time add(linux timestamp)\n    }\n    \n    mapping (uint16 => Record[]) private records;\n    \n    function addRecord(uint16 workerId,uint date,uint8 count,uint add_time) public{\n        Record memory new_record = Record(date,count,add_time);\n        records[workerId].push(new_record);         //add a new record\n    }\n    \n    function getRecords(uint16 workerId) public returns (uint) {\n        return records[workerId].length;         //add a new record\n    }\n}",
+  "sourcePath": "/home/logic/桌面/project/contracts/admin.sol",
+  "ast": {
+    "absolutePath": "/home/logic/桌面/project/contracts/admin.sol",
+    "exportedSymbols": {
+      "admin": [
+        111
+      ]
+    },
+    "id": 112,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 58,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 111,
+        "linearizedBaseContracts": [
+          111
+        ],
+        "name": "admin",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "admin.Record",
+            "id": 65,
+            "members": [
+              {
+                "constant": false,
+                "id": 60,
+                "name": "date",
+                "nodeType": "VariableDeclaration",
+                "scope": 65,
+                "src": "69:9:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 59,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "69:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 62,
+                "name": "count",
+                "nodeType": "VariableDeclaration",
+                "scope": 65,
+                "src": "106:11:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 61,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "106:5:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 64,
+                "name": "add_time",
+                "nodeType": "VariableDeclaration",
+                "scope": 65,
+                "src": "145:13:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 63,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "145:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Record",
+            "nodeType": "StructDefinition",
+            "scope": 111,
+            "src": "46:156:1",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 70,
+            "name": "records",
+            "nodeType": "VariableDeclaration",
+            "scope": 111,
+            "src": "212:44:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_uint16_$_t_array$_t_struct$_Record_$65_storage_$dyn_storage_$",
+              "typeString": "mapping(uint16 => struct admin.Record[])"
+            },
+            "typeName": {
+              "id": 69,
+              "keyType": {
+                "id": 66,
+                "name": "uint16",
+                "nodeType": "ElementaryTypeName",
+                "src": "221:6:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "212:28:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_uint16_$_t_array$_t_struct$_Record_$65_storage_$dyn_storage_$",
+                "typeString": "mapping(uint16 => struct admin.Record[])"
+              },
+              "valueType": {
+                "baseType": {
+                  "contractScope": null,
+                  "id": 67,
+                  "name": "Record",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 65,
+                  "src": "231:6:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Record_$65_storage_ptr",
+                    "typeString": "struct admin.Record"
+                  }
+                },
+                "id": 68,
+                "length": null,
+                "nodeType": "ArrayTypeName",
+                "src": "231:8:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_struct$_Record_$65_storage_$dyn_storage_ptr",
+                  "typeString": "struct admin.Record[]"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 96,
+              "nodeType": "Block",
+              "src": "345:142:1",
+              "statements": [
+                {
+                  "assignments": [
+                    82
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 82,
+                      "name": "new_record",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 97,
+                      "src": "355:24:1",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Record_$65_memory_ptr",
+                        "typeString": "struct admin.Record"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 81,
+                        "name": "Record",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 65,
+                        "src": "355:6:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Record_$65_storage_ptr",
+                          "typeString": "struct admin.Record"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 88,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 84,
+                        "name": "date",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 74,
+                        "src": "389:4:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 85,
+                        "name": "count",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 76,
+                        "src": "394:5:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint8",
+                          "typeString": "uint8"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 86,
+                        "name": "add_time",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 78,
+                        "src": "400:8:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_uint8",
+                          "typeString": "uint8"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 83,
+                      "name": "Record",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 65,
+                      "src": "382:6:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_struct$_Record_$65_storage_ptr_$",
+                        "typeString": "type(struct admin.Record storage pointer)"
+                      }
+                    },
+                    "id": 87,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "structConstructorCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "382:27:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Record_$65_memory",
+                      "typeString": "struct admin.Record memory"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "355:54:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 93,
+                        "name": "new_record",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 82,
+                        "src": "442:10:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Record_$65_memory_ptr",
+                          "typeString": "struct admin.Record memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_struct$_Record_$65_memory_ptr",
+                          "typeString": "struct admin.Record memory"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 89,
+                          "name": "records",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 70,
+                          "src": "419:7:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint16_$_t_array$_t_struct$_Record_$65_storage_$dyn_storage_$",
+                            "typeString": "mapping(uint16 => struct admin.Record storage ref[] storage ref)"
+                          }
+                        },
+                        "id": 91,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 90,
+                          "name": "workerId",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 72,
+                          "src": "427:8:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint16",
+                            "typeString": "uint16"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "419:17:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_Record_$65_storage_$dyn_storage",
+                          "typeString": "struct admin.Record storage ref[] storage ref"
+                        }
+                      },
+                      "id": 92,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "419:22:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_Record_$65_storage_$returns$_t_uint256_$",
+                        "typeString": "function (struct admin.Record storage ref) returns (uint256)"
+                      }
+                    },
+                    "id": 94,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "419:34:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 95,
+                  "nodeType": "ExpressionStatement",
+                  "src": "419:34:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 97,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "addRecord",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 79,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 72,
+                  "name": "workerId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 97,
+                  "src": "286:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  },
+                  "typeName": {
+                    "id": 71,
+                    "name": "uint16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "286:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 74,
+                  "name": "date",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 97,
+                  "src": "302:9:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 73,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "302:4:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 76,
+                  "name": "count",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 97,
+                  "src": "312:11:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 75,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "312:5:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 78,
+                  "name": "add_time",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 97,
+                  "src": "324:13:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 77,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "324:4:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "285:53:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 80,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "345:0:1"
+            },
+            "scope": 111,
+            "src": "267:220:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 109,
+              "nodeType": "Block",
+              "src": "556:75:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "expression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 104,
+                        "name": "records",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 70,
+                        "src": "573:7:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_uint16_$_t_array$_t_struct$_Record_$65_storage_$dyn_storage_$",
+                          "typeString": "mapping(uint16 => struct admin.Record storage ref[] storage ref)"
+                        }
+                      },
+                      "id": 106,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 105,
+                        "name": "workerId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 99,
+                        "src": "581:8:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint16",
+                          "typeString": "uint16"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "573:17:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_Record_$65_storage_$dyn_storage",
+                        "typeString": "struct admin.Record storage ref[] storage ref"
+                      }
+                    },
+                    "id": 107,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "length",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": null,
+                    "src": "573:24:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 103,
+                  "id": 108,
+                  "nodeType": "Return",
+                  "src": "566:31:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 110,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "getRecords",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 100,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 99,
+                  "name": "workerId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 110,
+                  "src": "517:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  },
+                  "typeName": {
+                    "id": 98,
+                    "name": "uint16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "517:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "516:17:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 103,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 102,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 110,
+                  "src": "550:4:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 101,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "550:4:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "549:6:1"
+            },
+            "scope": 111,
+            "src": "497:134:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 112,
+        "src": "26:607:1"
+      }
+    ],
+    "src": "0:633:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/logic/桌面/project/contracts/admin.sol",
+    "exportedSymbols": {
+      "admin": [
+        111
+      ]
+    },
+    "id": 112,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 58,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 111,
+        "linearizedBaseContracts": [
+          111
+        ],
+        "name": "admin",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "admin.Record",
+            "id": 65,
+            "members": [
+              {
+                "constant": false,
+                "id": 60,
+                "name": "date",
+                "nodeType": "VariableDeclaration",
+                "scope": 65,
+                "src": "69:9:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 59,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "69:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 62,
+                "name": "count",
+                "nodeType": "VariableDeclaration",
+                "scope": 65,
+                "src": "106:11:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 61,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "106:5:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 64,
+                "name": "add_time",
+                "nodeType": "VariableDeclaration",
+                "scope": 65,
+                "src": "145:13:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 63,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "145:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Record",
+            "nodeType": "StructDefinition",
+            "scope": 111,
+            "src": "46:156:1",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 70,
+            "name": "records",
+            "nodeType": "VariableDeclaration",
+            "scope": 111,
+            "src": "212:44:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_uint16_$_t_array$_t_struct$_Record_$65_storage_$dyn_storage_$",
+              "typeString": "mapping(uint16 => struct admin.Record[])"
+            },
+            "typeName": {
+              "id": 69,
+              "keyType": {
+                "id": 66,
+                "name": "uint16",
+                "nodeType": "ElementaryTypeName",
+                "src": "221:6:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "212:28:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_uint16_$_t_array$_t_struct$_Record_$65_storage_$dyn_storage_$",
+                "typeString": "mapping(uint16 => struct admin.Record[])"
+              },
+              "valueType": {
+                "baseType": {
+                  "contractScope": null,
+                  "id": 67,
+                  "name": "Record",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 65,
+                  "src": "231:6:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Record_$65_storage_ptr",
+                    "typeString": "struct admin.Record"
+                  }
+                },
+                "id": 68,
+                "length": null,
+                "nodeType": "ArrayTypeName",
+                "src": "231:8:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_struct$_Record_$65_storage_$dyn_storage_ptr",
+                  "typeString": "struct admin.Record[]"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 96,
+              "nodeType": "Block",
+              "src": "345:142:1",
+              "statements": [
+                {
+                  "assignments": [
+                    82
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 82,
+                      "name": "new_record",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 97,
+                      "src": "355:24:1",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Record_$65_memory_ptr",
+                        "typeString": "struct admin.Record"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 81,
+                        "name": "Record",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 65,
+                        "src": "355:6:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Record_$65_storage_ptr",
+                          "typeString": "struct admin.Record"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 88,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 84,
+                        "name": "date",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 74,
+                        "src": "389:4:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 85,
+                        "name": "count",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 76,
+                        "src": "394:5:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint8",
+                          "typeString": "uint8"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 86,
+                        "name": "add_time",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 78,
+                        "src": "400:8:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_uint8",
+                          "typeString": "uint8"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 83,
+                      "name": "Record",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 65,
+                      "src": "382:6:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_struct$_Record_$65_storage_ptr_$",
+                        "typeString": "type(struct admin.Record storage pointer)"
+                      }
+                    },
+                    "id": 87,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "structConstructorCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "382:27:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Record_$65_memory",
+                      "typeString": "struct admin.Record memory"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "355:54:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 93,
+                        "name": "new_record",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 82,
+                        "src": "442:10:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Record_$65_memory_ptr",
+                          "typeString": "struct admin.Record memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_struct$_Record_$65_memory_ptr",
+                          "typeString": "struct admin.Record memory"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 89,
+                          "name": "records",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 70,
+                          "src": "419:7:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint16_$_t_array$_t_struct$_Record_$65_storage_$dyn_storage_$",
+                            "typeString": "mapping(uint16 => struct admin.Record storage ref[] storage ref)"
+                          }
+                        },
+                        "id": 91,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 90,
+                          "name": "workerId",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 72,
+                          "src": "427:8:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint16",
+                            "typeString": "uint16"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "419:17:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_Record_$65_storage_$dyn_storage",
+                          "typeString": "struct admin.Record storage ref[] storage ref"
+                        }
+                      },
+                      "id": 92,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "419:22:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_Record_$65_storage_$returns$_t_uint256_$",
+                        "typeString": "function (struct admin.Record storage ref) returns (uint256)"
+                      }
+                    },
+                    "id": 94,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "419:34:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 95,
+                  "nodeType": "ExpressionStatement",
+                  "src": "419:34:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 97,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "addRecord",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 79,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 72,
+                  "name": "workerId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 97,
+                  "src": "286:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  },
+                  "typeName": {
+                    "id": 71,
+                    "name": "uint16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "286:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 74,
+                  "name": "date",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 97,
+                  "src": "302:9:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 73,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "302:4:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 76,
+                  "name": "count",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 97,
+                  "src": "312:11:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 75,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "312:5:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 78,
+                  "name": "add_time",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 97,
+                  "src": "324:13:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 77,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "324:4:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "285:53:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 80,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "345:0:1"
+            },
+            "scope": 111,
+            "src": "267:220:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 109,
+              "nodeType": "Block",
+              "src": "556:75:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "expression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 104,
+                        "name": "records",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 70,
+                        "src": "573:7:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_uint16_$_t_array$_t_struct$_Record_$65_storage_$dyn_storage_$",
+                          "typeString": "mapping(uint16 => struct admin.Record storage ref[] storage ref)"
+                        }
+                      },
+                      "id": 106,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 105,
+                        "name": "workerId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 99,
+                        "src": "581:8:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint16",
+                          "typeString": "uint16"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "573:17:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_Record_$65_storage_$dyn_storage",
+                        "typeString": "struct admin.Record storage ref[] storage ref"
+                      }
+                    },
+                    "id": 107,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "length",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": null,
+                    "src": "573:24:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 103,
+                  "id": 108,
+                  "nodeType": "Return",
+                  "src": "566:31:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 110,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "getRecords",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 100,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 99,
+                  "name": "workerId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 110,
+                  "src": "517:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  },
+                  "typeName": {
+                    "id": 98,
+                    "name": "uint16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "517:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "516:17:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 103,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 102,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 110,
+                  "src": "550:4:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 101,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "550:4:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "549:6:1"
+            },
+            "scope": 111,
+            "src": "497:134:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 112,
+        "src": "26:607:1"
+      }
+    ],
+    "src": "0:633:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.23+commit.124ca40d.Emscripten.clang"
+  },
+  "networks": {
+    "95518": {
+      "events": {},
+      "links": {},
+      "address": "0xf3da32b64a1d724aa8c835ad1f0fe108955fc9be",
+      "transactionHash": "0xbb167085d42f0d8eae388970b052918fa6d0980d0fde3073bbba722f1fc4ba7b"
+    }
+  },
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-04-27T07:59:49.811Z"
+}
