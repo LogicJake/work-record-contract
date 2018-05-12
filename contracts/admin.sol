@@ -2,6 +2,7 @@ pragma solidity ^0.4.16;
 pragma experimental ABIEncoderV2;
 contract admin{
     struct Record{
+        uint8 work_id;       //work date
         uint8 date;       //work date
         uint8 count;       //work hour
         uint8 add_time;     // the time add(linux timestamp)
@@ -9,8 +10,8 @@ contract admin{
     
     mapping (uint16 => Record[]) public records;
     
-    function addRecord(uint16 workerId,uint8 date,uint8 count,uint8 add_time) public{
-        Record memory new_record = Record(date,count,add_time);
+    function addRecord(uint16 workerId,uint8 work_id,uint8 date,uint8 count,uint8 add_time) public{
+        Record memory new_record = Record(work_id,date,count,add_time);
         records[workerId].push(new_record);         //add a new record
     }
     
