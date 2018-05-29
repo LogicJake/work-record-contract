@@ -43,13 +43,27 @@ contract admin{
         }
     }
     
-    function getRecordsByWorkerId(uint workerId) constant public returns(uint length){
+    function getWorkssByWorkerId(uint workerId) constant public returns(string res){
         for(uint i = 0; i < works[workerId].length; i++)
         {
             uint workId = works[workerId][i];
-            length += records[workerId][workId].length;
+            res = strConcat2(res,uint2str(workId));
         }
     }
+    
+    function strConcat2(string _a, string _b) pure internal returns (string){
+        bytes memory _ba = bytes(_a);
+        bytes memory _bb = bytes(_b);
+        string memory ret = new string(_ba.length + _bb.length + 1);
+        bytes memory bret = bytes(ret);
+        uint k = 0;
+        for (uint i = 0; i < _ba.length; i++)bret[k++] = _ba[i];
+        bret[k++] = ",";
+        for (i = 0; i < _bb.length; i++) bret[k++] = _bb[i];
+
+        return string(ret);
+    }
+    
     
     function strConcat(string _a, string _b,string _c,string _d) pure internal returns (string){
         bytes memory _ba = bytes(_a);
