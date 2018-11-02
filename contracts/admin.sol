@@ -10,15 +10,15 @@ contract admin{
     mapping (uint =>  uint[])  public works;
     mapping (uint =>  mapping (uint => Record[]))  public records;
     
-    mapping (string => string) file_hash;
+    mapping (bytes32 => bytes32) file_hash;
     
-    function addHash(string name, string hash) public{
-        book_hash[name] = hash;
+    function addHash(bytes32 name, bytes32 hash) public{
+        file_hash[name] = hash;
     }
     
-    function vertifyHash(string name, string v_hash) constant public returns (bool){
-        string r_hash = book_hash[name];
-        return keccak256(v_hash) == keccak256(r_hash);
+    function vertifyHash(bytes32 name, bytes32 v_hash) constant public returns (bool){
+        bytes32 r_hash = file_hash[name];
+        return v_hash == r_hash;
     }
     
     
