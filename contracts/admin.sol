@@ -10,6 +10,18 @@ contract admin{
     mapping (uint =>  uint[])  public works;
     mapping (uint =>  mapping (uint => Record[]))  public records;
     
+    mapping (string => string) file_hash;
+    
+    function addHash(string name, string hash) public{
+        book_hash[name] = hash;
+    }
+    
+    function vertifyHash(string name, string v_hash) constant public returns (bool){
+        string r_hash = book_hash[name];
+        return keccak256(v_hash) == keccak256(r_hash);
+    }
+    
+    
     function addRecord(uint workerId,uint workId,uint date,uint count,uint addTime) public{
         Record memory new_record = Record(date,count,addTime);
         records[workerId][workId].push(new_record);
